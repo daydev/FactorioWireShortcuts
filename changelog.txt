@@ -1,0 +1,36 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.17
+Date: 2019-03-12
+  Features:
+    - Red and green wire no longer craftable.
+    - Red and green wire disappear from the player inventory if placed there by Q or manually.
+    - Shortcut and hotkey to give a stack of red or green wire.
+    - Hotkey to switch color of wire when holding a stack.
+  Locale:
+    - English, Russian, Ukrainian. 
+---------------------------------------------------------------------------------------------------
+Version: 0.1.171
+Date: 2019-03-12
+  Changes:
+    - Hotkey to switch color of the currently held wire changed to Ctrl + Tab to avoid conflict with Steam overlay.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.17
+Date: 2019-03-12
+  Features:
+    - Shortcut and hotkey to pick up copper wire from the player inventory if available or otherwise give one (1) copper wire.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.171
+Date: 2019-03-12
+  Features:
+    - Added changelog :)
+---------------------------------------------------------------------------------------------------
+Version: 0.2.172
+Date: 2019-03-12
+  Features:
+    - Remove red and green wire from all recipes (none in vanilla, but sometimes happens in mods, e.g. LTN). 
+---------------------------------------------------------------------------------------------------
+Version: 0.2.173
+Date: 2019-03-13
+  Bugfixes:
+    - Fixed the changelog format to make the in-game parser happy. 
+    - Typos in the changelog.
