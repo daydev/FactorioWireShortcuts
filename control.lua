@@ -17,12 +17,11 @@ end
 function give_copper(player_index)
 	local player = game.players[player_index]
 	player.clean_cursor()
-	local inv = game.players[player_index].get_inventory(defines.inventory.player_main)
+	local inv = game.players[player_index].get_main_inventory()
 	if inv and inv.valid then
 		local wire = inv.find_item_stack("copper-cable")
 		if wire then
-			player.cursor_stack.set_stack(wire)
-			inv.remove(wire)
+			player.cursor_stack.swap_stack(wire)
 		else 
 			player.cursor_stack.set_stack({name = "copper-cable", count = 1})
 		end
@@ -41,7 +40,7 @@ function switch_wire(player_index)
 end
 
 local function remove_wire(event)
-	local inv = game.players[event.player_index].get_inventory(defines.inventory.player_main)
+	local inv = game.players[event.player_index].get_main_inventory()
 	if inv and inv.valid then
 		inv.remove("red-wire")
 		inv.remove("green-wire")

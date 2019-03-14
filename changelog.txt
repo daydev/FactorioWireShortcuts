@@ -34,3 +34,8 @@ Date: 2019-03-13
   Bugfixes:
     - Fixed the changelog format to make the in-game parser happy. 
     - Typos in the changelog.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.174
+Date: 2019-03-14
+  Bugfixes:
+    - Fixed that red and green wire weren't properly removed from ingredients of recipes in the presence of Bob's Electronics and potentially other electronics related mods

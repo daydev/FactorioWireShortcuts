@@ -18,8 +18,10 @@ end
 for _, recipe in pairs(data.raw["recipe"]) do
 	if recipe.ingredients then
 		local ingredients = recipe.ingredients
-		for i = (#ingredients), 1, -1 do 
-			if ingredients[i][1] == "green-wire" or ingredients[i][1] == "red-wire" then
+		for i = (#ingredients), 1, -1 do
+			if ingredients[i][1] == "green-wire" or
+					ingredients[i][1] == "red-wire" or
+					ingredients[i].name and (ingredients[i].name == "green-wire" or ingredients[i].name == "red-wire") then
 				table.remove(ingredients, i)
 			end
 		end
