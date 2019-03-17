@@ -1,4 +1,4 @@
-VERSION := 0.2.176
+VERSION := 0.2.177
 NAME := WireShortcuts
 FACTORIO_HOME := $$HOME/bin/games/factorio
 
