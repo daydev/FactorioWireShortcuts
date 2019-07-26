@@ -1,4 +1,4 @@
-VERSION := 0.2.178
+VERSION := 0.3.172
 NAME := WireShortcuts
 FACTORIO_HOME := $$HOME/bin/games/factorio
 
@@ -7,7 +7,7 @@ all: clean build install_mod
 build:
 	mkdir build/
 	mkdir build/$(NAME)_$(VERSION)
-	cp -R info.json thumbnail.png data.lua data-final-fixes.lua control.lua changelog.txt graphics locale migrations prototypes build/$(NAME)_$(VERSION)
+	cp -R info.json thumbnail.png data.lua data-final-fixes.lua control.lua settings.lua changelog.txt graphics locale migrations prototypes build/$(NAME)_$(VERSION)
 	cd build && zip -r $(NAME)_$(VERSION).zip $(NAME)_$(VERSION)
 
 clean:

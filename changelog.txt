@@ -1,4 +1,26 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.172
+Date: 2019-07-26
+  Bugfixes:
+    - Fixed minor issues with the implementation of the wire surrogates.
+    - Fixed the changelog.
+---------------------------------------------------------------------------------------------------
+Version: 0.3.171
+Date: 2019-07-25
+  Bugfixes:
+    - Changelog typo
+    - Fixed replacing wires with surrogates in recipes.
+---------------------------------------------------------------------------------------------------
+Version: 0.3.170
+Date: 2019-07-25
+  Features:
+    - Added an option to retain "wire surrogates" in recipes for mods that use them. HIGHLY NOT RECOMMENDED. Let the wires go! But if you must.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.179
+Date: 2019-07-20
+  Bugfixes:
+    - Fixed that colored wire wasn't removed from modded recipes if they were defined in a particular way.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.178
 Date: 2019-05-20
   Changes:
@@ -7,17 +29,17 @@ Date: 2019-05-20
 Version: 0.2.177
 Date: 2019-03-17
   Bugfixes:
-    - Reported error with removing wire from ingredient
+    - Reported error with removing wire from ingredient.
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.176
 Date: 2019-03-16
   Locale:
-    - German, contributed by LeByom
+    - German, contributed by LeByom.
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.175
 Date: 2019-03-15
   Changes:
-    - Reversed the order of the changelog to improve human readability and respect the convention
+    - Reversed the order of the changelog to improve human readability and respect the convention.
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.174
 Date: 2019-03-14
