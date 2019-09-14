@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.173
+Date: 2019-09-14
+  Minor Features:
+    - Added compatibility with Industrial Revolution for the copper wire shortcut unlock.
+---------------------------------------------------------------------------------------------------
 Version: 0.3.172
 Date: 2019-07-26
   Bugfixes:

@@ -1,3 +1,11 @@
+local colored_tech_unlock = "circuit-network"
+local copper_tech_unlock
+if mods["IndustrialRevolution"] then
+    copper_tech_unlock = "deadlock-steam-power"
+else
+    copper_tech_unlock = "electronics"
+end
+
 data:extend(
 {
   {
@@ -6,7 +14,7 @@ data:extend(
       order = "w[wire]-r[red-wire]",
       action = "lua",
       localised_name = {"shortcut.WireShortcuts-give-red"},
-      technology_to_unlock = "circuit-network",
+      technology_to_unlock = colored_tech_unlock,
       icon =
       {
         filename = "__WireShortcuts__/graphics/icons/red-wire-x32.png",
@@ -46,7 +54,7 @@ data:extend(
       order = "w[wire]-g[green-wire]",
       action = "lua",
       localised_name = {"shortcut.WireShortcuts-give-green"},
-      technology_to_unlock = "circuit-network",
+      technology_to_unlock = colored_tech_unlock,
       icon =
       {
         filename = "__WireShortcuts__/graphics/icons/green-wire-x32.png",
@@ -86,7 +94,7 @@ data:extend(
       order = "w[wire]-c[copper-wire]",
       action = "lua",
       localised_name = {"shortcut.WireShortcuts-give-copper"},
-      technology_to_unlock = "electronics",
+      technology_to_unlock = copper_tech_unlock,
       icon =
       {
         filename = "__WireShortcuts__/graphics/icons/copper-wire-x32.png",
