@@ -11,8 +11,11 @@ end
 function give_wire(player_index, wire_type)
     local player = game.players[player_index]
     if player.render_mode == defines.render_mode.game then
-        player.clean_cursor()
-        player.cursor_stack.set_stack({ name = wire_type, count = 200 })
+        if player.clean_cursor() then
+            player.cursor_stack.set_stack({ name = wire_type, count = 200 })
+        else
+            player.print({ "message.cannot-clean-cursor" })
+        end
     else
         player.print({ "message.no-map-mode" })
     end
@@ -21,14 +24,16 @@ end
 function give_copper(player_index)
     local player = game.players[player_index]
     if player.render_mode == defines.render_mode.game then
-        player.clean_cursor()
+
         local inv = game.players[player_index].get_main_inventory()
         if inv and inv.valid then
             local wire = inv.find_item_stack("copper-cable")
             if wire then
                 player.cursor_stack.swap_stack(wire)
-            else
+            elseif player.clean_cursor() then
                 player.cursor_stack.set_stack({ name = "copper-cable", count = 1 })
+            else
+                player.print({ "message.cannot-clean-cursor" })
             end
         end
     else

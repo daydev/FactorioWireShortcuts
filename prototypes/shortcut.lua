@@ -13,6 +13,7 @@ data:extend(
       name = "WireShortcuts-give-red",
       order = "w[wire]-r[red-wire]",
       action = "lua",
+      associated_control_input = "WireShortcuts-give-red",
       localised_name = {"shortcut.WireShortcuts-give-red"},
       technology_to_unlock = colored_tech_unlock,
       icon =
@@ -53,6 +54,7 @@ data:extend(
       name = "WireShortcuts-give-green",
       order = "w[wire]-g[green-wire]",
       action = "lua",
+      associated_control_input = "WireShortcuts-give-green",
       localised_name = {"shortcut.WireShortcuts-give-green"},
       technology_to_unlock = colored_tech_unlock,
       icon =
@@ -93,6 +95,7 @@ data:extend(
       name = "WireShortcuts-give-copper",
       order = "w[wire]-c[copper-wire]",
       action = "lua",
+      associated_control_input = "WireShortcuts-give-copper",
       localised_name = {"shortcut.WireShortcuts-give-copper"},
       technology_to_unlock = copper_tech_unlock,
       icon =

@@ -65,7 +65,7 @@ if is_wire_surrogate then
     data.raw["item"]["fake-green-wire"].flags = {}
     data.raw["recipe"]["fake-red-wire"].hidden = false
     data.raw["recipe"]["fake-green-wire"].hidden = false
-    if data.raw["recipe"]["red-wire"] and data.raw["recipe"]["red-wire"] then
+    if data.raw["recipe"]["red-wire"] and data.raw["recipe"]["green-wire"] then
         data.raw["recipe"]["fake-red-wire"].ingredients = data.raw["recipe"]["red-wire"].ingredients
         data.raw["recipe"]["fake-green-wire"].ingredients = data.raw["recipe"]["green-wire"].ingredients
     end

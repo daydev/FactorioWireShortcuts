@@ -1,4 +1,17 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.2
+Date: 2020-04-30
+  Features:
+    - Updated for Factorio 0.18.22
+  Bugfixes:
+    - Fixed a potential loss of items if cursor couldn't be cleaned.
+---------------------------------------------------------------------------------------------------
+Version: 0.4.1
+Date: 2020-04-10
+  Bugfixes:
+    - Attempted to fix that hotkey would not respect shortcut unlocks.
+    - Fixed minor internal validation error.
+---------------------------------------------------------------------------------------------------
 Version: 0.4.0
 Date: 2020-01-23
   Features:
