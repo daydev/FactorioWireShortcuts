@@ -1,10 +1,18 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: 2020-04-30
-  Features:
-    - Updated for Factorio 0.18.22
+  Locale:
+    - Updated German locale, contributed by FI
   Bugfixes:
-    - Fixed a potential loss of items if cursor couldn't be cleaned.
+    - Fixed the cursor clearing check so that red and green wire wouldn't get in the way.
+    - Implemented that red and green wire are also disposed of when placed into the player trash or on the ground.
+---------------------------------------------------------------------------------------------------
+Version: 0.4.2
+Date: 2020-04-30
+  Features:
+    - Updated for Factorio 0.18.22.
+  Bugfixes:
+    - Fixed a potential loss of items in the rare event the cursor couldn't be cleared.
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.1
 Date: 2020-04-10
