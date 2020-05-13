@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.4.2
-Date: 2020-04-30
+Version: 0.4.3
+Date: 2020-05-01
   Locale:
-    - Updated German locale, contributed by FI
+    - Updated German locale, contributed by FI.
   Bugfixes:
     - Fixed the cursor clearing check so that red and green wire wouldn't get in the way.
     - Implemented that red and green wire are also disposed of when placed into the player trash or on the ground.
