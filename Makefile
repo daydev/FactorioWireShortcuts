@@ -1,4 +1,4 @@
-VERSION := 0.4.3
+VERSION := 0.4.4
 NAME := WireShortcuts
 FACTORIO_HOME := $$HOME/bin/games/factorio
 
@@ -16,6 +16,6 @@ clean:
 install_mod:
 	if [ -d $(FACTORIO_HOME) ] ; \
 	then \
-		rm -rf $(FACTORIO_HOME)/mods/$(NAME)_$(VERSION) ; \
+		rm -rf $(FACTORIO_HOME)/mods/$(NAME)_* ; \
 		cp -R build/$(NAME)_$(VERSION) $(FACTORIO_HOME)/mods ; \
 fi;
