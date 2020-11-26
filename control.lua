@@ -58,9 +58,9 @@ end
 
 function clear_cursor_discard_wire(player)
     if player.cursor_stack.valid_for_read then
-        return (player.cursor_stack.name == "red-wire" or player.cursor_stack.name == "green-wire" or player.clean_cursor())
+        return (player.cursor_stack.name == "red-wire" or player.cursor_stack.name == "green-wire" or player.clear_cursor())
     else
-        return player.clean_cursor()
+        return player.clear_cursor()
     end
 end
 
