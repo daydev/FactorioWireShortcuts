@@ -37,7 +37,7 @@ function handle_cutter(event_name, player_id)
         local advanced_mode = settings.get_player_settings(game.get_player(player_id))["wire-shortcuts-is-advanced-cutter"].value
         if not advanced_mode then
             handle_wire(event_name, player_id)
-        else 
+        elseif string.sub(event_name, 1, 13) == "WireShortcuts" then 
             give_cutter(player_id, string.sub(event_name, 20, #event_name))
         end
     end
