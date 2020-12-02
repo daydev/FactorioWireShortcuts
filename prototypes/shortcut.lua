@@ -130,5 +130,46 @@ data:extend(
         scale = 1,
         flags = {"icon"}
       }
-  }
+  },
+  {
+    type = "shortcut",
+    name = "WireShortcuts-give-cutter",
+    order = "w[wire]-c[cutter]",
+    action = "lua",
+    associated_control_input = "WireShortcuts-give-cutter",
+    localised_name = {"shortcut.WireShortcuts-give-cutter"},
+    technology_to_unlock = colored_tech_unlock,
+    icon =
+    {
+      filename = "__WireShortcuts__/graphics/icons/wire-cutter-x32.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"gui-icon"}
+    },
+    disabled_icon =
+    {
+      filename = "__WireShortcuts__/graphics/icons/wire-cutter-white-x32.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"gui-icon"}
+    },
+    small_icon =
+    {
+      filename = "__WireShortcuts__/graphics/icons/wire-cutter-x24.png",
+      priority = "extra-high-no-scale",
+      size = 24,
+      scale = 1,
+      flags = {"gui-icon"}
+    },
+    disabled_small_icon =
+    {
+      filename = "__WireShortcuts__/graphics/icons/wire-cutter-white-x24.png",
+      priority = "extra-high-no-scale",
+      size = 24,
+      scale = 1,
+      flags = {"gui-icon"}
+    }
+},
 })

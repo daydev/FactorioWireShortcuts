@@ -7,10 +7,10 @@ if data.raw["recipe"]["red-wire"] and data.raw["recipe"]["green-wire"] then
     data.raw["recipe"]["green-wire"].enabled = false
 end
 
--- if data.raw["item"]["red-wire"] and data.raw["item"]["green-wire"] then
---     data.raw["item"]["red-wire"].flags = { "hidden" }
---     data.raw["item"]["green-wire"].flags = { "hidden" }
--- end
+if data.raw["item"]["red-wire"] and data.raw["item"]["green-wire"] then
+    data.raw["item"]["red-wire"].flags = {"only-in-cursor"}
+    data.raw["item"]["green-wire"].flags = {"only-in-cursor"}
+end
 
 if data.raw["technology"]["circuit-network"] then
     local tech_effects = data.raw["technology"]["circuit-network"].effects

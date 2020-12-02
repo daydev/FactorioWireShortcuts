@@ -25,6 +25,12 @@ data:extend({
     name = "WireShortcuts-switch-wire",
     key_sequence = "CONTROL + TAB",
     consuming = "none"
-  }
+  },
+  {
+    type = "custom-input",
+    name = "WireShortcuts-give-cutter",
+    key_sequence = "ALT + X",
+    consuming = "none"
+  },
 
 })
