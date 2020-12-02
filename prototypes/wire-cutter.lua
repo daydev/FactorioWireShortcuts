@@ -11,7 +11,6 @@ local circuit_wireable = {
     "electric-pole",
     "accumulator",
     "container",
-    "gate",
     "inserter",
     "lamp",
     "logistic-container",
@@ -23,7 +22,8 @@ local circuit_wireable = {
     "roboport",
     "storage-tank",
     "train-stop",
-    "transport-belt"
+    "transport-belt",
+    "wall"
 }
 
 data:extend(

@@ -1,7 +1,7 @@
 
 
-function handle_shortcut(event, input_name)
-    local event_name = event.prototype_name or input_name
+function handle_shortcut(event)
+    local event_name = event.prototype_name or event.input_name
     local player_id = event.player_index
     if is_cutter_event(event_name, player_id) then
         handle_cutter(event_name, player_id)
@@ -15,12 +15,8 @@ function is_cutter_event(event_name, player_id)
         return true 
     else 
         local player = game.players[player_id]
-        if player.cursor_stack.valid_for_read and
-                string.sub(player.cursor_stack.name, 1, 11) == "wire-cutter" then
-            return true
-        else 
-            return false
-        end
+        return player.cursor_stack.valid_for_read and
+                string.sub(player.cursor_stack.name, 1, 11) == "wire-cutter"
     end
 end
 
@@ -41,12 +37,8 @@ function handle_cutter(event_name, player_id)
         local advanced_mode = settings.get_player_settings(game.get_player(player_id))["wire-shortcuts-is-advanced-cutter"].value
         if not advanced_mode then
             handle_wire(event_name, player_id)
-        elseif event_name == "WireShortcuts-give-red" then
-            give_cutter(player_id, "red")
-        elseif event_name == "WireShortcuts-give-green" then
-            give_cutter(player_id, "green")
-        elseif event_name == "WireShortcuts-give-copper" then
-            give_cutter(player_id, "copper")
+        else 
+            give_cutter(player_id, string.sub(event_name, 20, #event_name))
         end
     end
 end
@@ -130,8 +122,18 @@ function handle_disconnect(event, alt)
     end
 end
 
-script.on_event(defines.events.on_lua_shortcut,
+script.on_event({
+                    defines.events.on_lua_shortcut,
+                    "WireShortcuts-give-red",
+                    "WireShortcuts-give-green",
+                    "WireShortcuts-give-copper",
+                    "WireShortcuts-give-cutter"
+                },
                 handle_shortcut) 
+
+script.on_event("WireShortcuts-switch-wire", function (event)
+    switch_wire(event.player_index)    
+end)
 
 script.on_event(defines.events.on_player_selected_area, function(event)
     handle_disconnect(event, false)
@@ -139,25 +141,5 @@ end)
 
 script.on_event(defines.events.on_player_alt_selected_area, function(event)
     handle_disconnect(event, true)
-end)
-
-script.on_event("WireShortcuts-give-red", function(event)
-    handle_shortcut(event, "WireShortcuts-give-red")
-end)
-
-script.on_event("WireShortcuts-give-green", function(event)
-    handle_shortcut(event, "WireShortcuts-give-green")
-end)
-
-script.on_event("WireShortcuts-give-copper", function(event)
-    handle_shortcut(event, "WireShortcuts-give-copper")
-end)
-
-script.on_event("WireShortcuts-switch-wire", function(event)
-    switch_wire(event.player_index)
-end)
-
-script.on_event("WireShortcuts-give-cutter", function(event)
-    handle_shortcut(event, "WireShortcuts-give-cutter")
 end)
 
