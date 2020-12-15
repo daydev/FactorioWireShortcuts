@@ -1,107 +1,64 @@
-
-
 function handle_shortcut(event)
     local event_name = event.prototype_name or event.input_name
-    local player_id = event.player_index
-    if is_cutter_event(event_name, player_id) then
-        handle_cutter(event_name, player_id)
-    else
-        handle_wire(event_name, player_id)
-    end
-end
+    if string.sub(event_name, 1, 13) ~= "WireShortcuts" then return end
 
-function is_cutter_event(event_name, player_id)
-    if event_name == "WireShortcuts-give-cutter" then 
-        return true 
-    else 
-        local player = game.players[player_id]
-        return player.cursor_stack.valid_for_read and
-                string.sub(player.cursor_stack.name, 1, 11) == "wire-cutter"
-    end
-end
-
-function handle_wire(event_name, player_id)
-    if event_name == "WireShortcuts-give-red" then
-        give_wire(player_id, "red-wire")
-    elseif event_name == "WireShortcuts-give-green" then
-        give_wire(player_id, "green-wire")
-    elseif event_name == "WireShortcuts-give-copper" then
-        give_copper(player_id)
-    end
-end
-
-function handle_cutter(event_name, player_id)
+    local player = game.players[event.player_index]
     if event_name == "WireShortcuts-give-cutter" then
-        give_cutter(player_id, "universal")
+        give_tool(player, "wire-cutter-universal")
     else
-        local advanced_mode = settings.get_player_settings(game.get_player(player_id))["wire-shortcuts-is-advanced-cutter"].value
-        if not advanced_mode then
-            handle_wire(event_name, player_id)
-        elseif string.sub(event_name, 1, 13) == "WireShortcuts" then 
-            give_cutter(player_id, string.sub(event_name, 20, #event_name))
+        local advanced_mode =
+            settings.get_player_settings(player)["wire-shortcuts-is-advanced-cutter"].value
+        local cutter_held = player.cursor_stack.valid_for_read and
+                                string.sub(player.cursor_stack.name, 1, 11) == "wire-cutter"
+        local mode_name = string.sub(event_name, 20, #event_name)
+        
+        if advanced_mode and cutter_held then
+            give_tool(player, "wire-cutter-" .. mode_name)
+        elseif mode_name == "copper" then
+            give_copper(player)
+        else
+            give_tool(player, mode_name .. "-wire", 200)
         end
     end
 end
 
-function give_cutter(player_index, kind)
-    local player = game.players[player_index]
+function give_tool(player, tool_name, count)
     if player.render_mode == defines.render_mode.game then
         if player.clear_cursor() then
-            player.cursor_stack.set_stack({ name = "wire-cutter-" .. kind, count = 1 })
+            player.cursor_stack.set_stack({name = tool_name, count = count or 1})
         end
     else
-        player.print({ "message.no-map-mode" })
+        player.print({"message.no-map-mode"})
     end
 end
 
-function give_wire(player_index, wire_type)
+function give_copper(player)
+    local inv = player.get_main_inventory()
+    if inv and inv.valid then
+        local wire = inv.find_item_stack("copper-cable")
+        if wire then
+            player.cursor_stack.swap_stack(wire)
+        else
+            give_tool(player, "copper-cable")
+        end
+    end
+end
+
+function handle_switch_wire(player_index)
     local player = game.players[player_index]
-    if player.render_mode == defines.render_mode.game then
-        if player.clear_cursor() then
-            player.cursor_stack.set_stack({ name = wire_type, count = 200 })
+    if player.cursor_stack.valid_for_read then
+        if player.cursor_stack.name == "red-wire" then
+            give_tool(player, "green-wire", 200)
+        elseif player.cursor_stack.name == "green-wire" then
+            give_tool(player, "red-wire", 200)
+        elseif player.cursor_stack.name == "wire-cutter-red" then
+            give_tool(player, "wire-cutter-green")
+        elseif player.cursor_stack.name == "wire-cutter-green" then
+            give_tool(player, "wire-cutter-red")
         end
-    else
-        player.print({ "message.no-map-mode" })
     end
 end
-
-function give_copper(player_index)
-    local player = game.players[player_index]
-    if player.render_mode == defines.render_mode.game then
-
-        local inv = game.players[player_index].get_main_inventory()
-        if inv and inv.valid then
-            local wire = inv.find_item_stack("copper-cable")
-            if wire then
-                player.cursor_stack.swap_stack(wire)
-            elseif player.clear_cursor() then
-                player.cursor_stack.set_stack({ name = "copper-cable", count = 1 })
-            end
-        end
-    else
-        player.print({ "message.no-map-mode" })
-    end
-end
-
-function switch_wire(player_index)
-    local player = game.players[player_index]
-    if player.render_mode == defines.render_mode.game then
-        if player.cursor_stack.valid_for_read then
-            if player.cursor_stack.name == "red-wire" then
-                give_wire(player_index, "green-wire")
-            elseif player.cursor_stack.name == "green-wire" then
-                give_wire(player_index, "red-wire")
-            elseif player.cursor_stack.name == "wire-cutter-red" then
-                give_cutter(player_index, "green")
-            elseif player.cursor_stack.name == "wire-cutter-green" then
-                give_cutter(player_index, "red")
-            end
-        end
-    else
-        player.print({ "message.no-map-mode" })
-    end
-end
-
+-- Cmt
 function handle_disconnect(event, alt)
     if string.sub(event.item, 1, 11) == "wire-cutter" then
         disconnect_mode = string.sub(event.item, 13, #event.item)
@@ -123,23 +80,18 @@ function handle_disconnect(event, alt)
 end
 
 script.on_event({
-                    defines.events.on_lua_shortcut,
-                    "WireShortcuts-give-red",
-                    "WireShortcuts-give-green",
-                    "WireShortcuts-give-copper",
-                    "WireShortcuts-give-cutter"
-                },
-                handle_shortcut) 
+    defines.events.on_lua_shortcut,
+    "WireShortcuts-give-red",
+    "WireShortcuts-give-green",
+    "WireShortcuts-give-copper",
+    "WireShortcuts-give-cutter"
+}, handle_shortcut)
 
-script.on_event("WireShortcuts-switch-wire", function (event)
-    switch_wire(event.player_index)    
-end)
+script.on_event("WireShortcuts-switch-wire",
+                function(event) handle_switch_wire(event.player_index) end)
 
-script.on_event(defines.events.on_player_selected_area, function(event)
-    handle_disconnect(event, false)
-end)
+script.on_event(defines.events.on_player_selected_area,
+                function(event) handle_disconnect(event, false) end)
 
-script.on_event(defines.events.on_player_alt_selected_area, function(event)
-    handle_disconnect(event, true)
-end)
-
+script.on_event(defines.events.on_player_alt_selected_area,
+                function(event) handle_disconnect(event, true) end)

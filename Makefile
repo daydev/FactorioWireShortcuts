@@ -1,5 +1,5 @@
-VERSION := 1.1.3
-NAME := WireShortcuts
+VERSION := $(shell node -p "require('./info.json').version")
+NAME := $(shell node -p "require('./info.json').name")
 FACTORIO_HOME := $$HOME/bin/games/factorio
 
 all: clean build install_mod
@@ -17,5 +17,5 @@ install_mod:
 	if [ -d $(FACTORIO_HOME) ] ; \
 	then \
 		rm -rf $(FACTORIO_HOME)/mods/$(NAME)_* ; \
-		cp -R build/$(NAME)_$(VERSION) $(FACTORIO_HOME)/mods ; \
+		cp build/$(NAME)_$(VERSION).zip $(FACTORIO_HOME)/mods ; \
 fi;
