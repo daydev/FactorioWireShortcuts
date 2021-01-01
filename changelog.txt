@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.5
+Date: 2021-01-01
+  Changes:
+    - Removed special compatibility with Industrial Revolution. In case of issues, use "/unlock-shortcut-bar" command
+  Bugfixes:
+    - Fixed incompatibility with Industrial Revolution 2.
+---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 2020-12-15
   Changes:

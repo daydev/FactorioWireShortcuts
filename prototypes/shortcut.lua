@@ -1,10 +1,6 @@
 local circuit_tech_unlock = "circuit-network"
 local copper_tech_unlock
-if mods["IndustrialRevolution"] then
-    copper_tech_unlock = "deadlock-steam-power"
-else
-    copper_tech_unlock = "electronics"
-end
+local copper_tech_unlock = "electronics"
 
 function wire_shortcut(wire_type, tech_unlock)
     return {

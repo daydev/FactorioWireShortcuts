@@ -10,6 +10,10 @@ The red and green wires are removed from all recipes where they appear (none in 
 
 The mod includes a shortcut and a hotkey (Alt + C) to pick up copper cable. If available, a stack of copper wire is taken from the inventory, otherwise it gives one (1) copper wire to prevent abuse. You can still trick the system and abuse it, but you'll have to work for it.
 
+#### Shortcut availability
+
+Technically, shortcuts are a "new game plus" feature, as in, you unlock them once by researching a particular technology and they stay available forever. If a shortcut, from this mod or otherwise, is not unlocked for any reason, overhaul mods and such, you can make all shotcuts available with the console command `/unlock-shortcut-bar`. This command does NOT disable achievements.
+
 ## Wire cutter
 
 A new feature in the mod as of version 1.1.1 is the wire cutter tool to quickly remove all connections in an area. The wire cutter has a shortcut button and a hotkey (Alt + X). Please, remember, that you can disable unwanted shortcuts and remap hotkeys.
