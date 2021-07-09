@@ -63,7 +63,7 @@ function handle_disconnect(event, alt)
     if string.sub(event.item, 1, 11) == "wire-cutter" then
         disconnect_mode = string.sub(event.item, 13, #event.item)
         for _, entity in ipairs(event.entities) do
-            if entity.valid then
+            if entity.valid and string.sub(entity.name, 1, 20) ~= "se-rocket-launch-pad" then
                 if not alt and disconnect_mode == "copper" or alt and disconnect_mode == "universal" then
                     entity.disconnect_neighbour()
                 elseif not alt and disconnect_mode == "red" or alt and disconnect_mode == "green" then
