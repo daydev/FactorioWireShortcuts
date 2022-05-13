@@ -1,6 +1,11 @@
-local circuit_tech_unlock = "circuit-network"
+local circuit_tech_unlock 
+if data.raw["technology"]["circuit-network"] then
+    circuit_tech_unlock = "circuit-network"
+end
 local copper_tech_unlock
-local copper_tech_unlock = "electronics"
+if data.raw["technology"]["electronics"] then
+    copper_tech_unlock = "electronics"
+end
 
 function wire_shortcut(wire_type, tech_unlock)
     return {
