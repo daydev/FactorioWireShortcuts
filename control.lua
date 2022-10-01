@@ -11,7 +11,7 @@ function handle_shortcut(event)
         local cutter_held = player.cursor_stack.valid_for_read and
                                 string.sub(player.cursor_stack.name, 1, 11) == "wire-cutter"
         local mode_name = string.sub(event_name, 20, #event_name)
-        
+
         if advanced_mode and cutter_held then
             give_tool(player, "wire-cutter-" .. mode_name)
         elseif mode_name == "copper" then
@@ -58,12 +58,27 @@ function handle_switch_wire(player_index)
         end
     end
 end
--- Cmt
+
+-- Some mods have entities with hidden connections that break if disconnected, we catch them here
+function has_hidden_connections(entity)
+    local blacklisted = {
+        "se-rocket-launch-pad",
+        "logistic-train-stop-lamp-control",
+        "logistic-train-stop-input" 
+    }
+    for _, filter in ipairs(blacklisted) do
+       if string.sub(entity.name, 1, #filter) == filter then
+            return true
+       end 
+    end
+    return false
+end
+
 function handle_disconnect(event, alt)
     if string.sub(event.item, 1, 11) == "wire-cutter" then
         disconnect_mode = string.sub(event.item, 13, #event.item)
         for _, entity in ipairs(event.entities) do
-            if entity.valid and string.sub(entity.name, 1, 20) ~= "se-rocket-launch-pad" then
+            if entity.valid and not has_hidden_connections(entity) then
                 if not alt and disconnect_mode == "copper" or alt and disconnect_mode == "universal" then
                     entity.disconnect_neighbour()
                 elseif not alt and disconnect_mode == "red" or alt and disconnect_mode == "green" then

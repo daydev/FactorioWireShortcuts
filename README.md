@@ -37,6 +37,10 @@ In multi-mode the wire cutter has four modes: universal (black-yellow icon), cop
 
 To avoid clutter, there is still only one wire cutter shortcut and hotkey, and they always set the wire cutter to the universal mode. The wire shortcuts and hotkeys are repurposed to switch the mode of the wire cutter while one is being held in the cursor. Each shortcut sets the wire cutter to the corresponding mode, i.e. the "give red wire" shortcut/hotkey switches the currently held wire cutter to the red mode, etc. If the wire cutter is in red or green mode, the "switch wire color" hotkey switches the color of the wire cutter. Remember, that all of this is only applicable if the multi-mode operation is selected, otherwise wire shortcuts have no effect on the wire cutter.   
 
-#### Limitations and compatibility
+#### Hidden Connections
 
-It has been reported that a Space Exploration mod entity Cargo Rocket Silo uses hidden wire connection for its operation. Therefore to not break its function, the wire cutter tool will not cut connections FROM Cargo Rocket Silos. Include all connected entities in the selection to disconnect a Cargo Rocket Silo. 
+Some mods create hidden wire connections for their operation. The currect workaround is that the wire cutter does not remove connections FROM those special entities with hidden connections. Cut from everything around them to disconnect. Current entities that cannot be easily disconnected by the wire cutter: 
+
+* Cargo Rocket Silo from Space Exploration
+* Logistic Train Stop Input (the lamp, not the stop itself) from LTN
+* Report if you find more such breaking entities in other mods!
