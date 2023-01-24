@@ -23,12 +23,8 @@ function handle_shortcut(event)
 end
 
 function give_tool(player, tool_name, count)
-    if player.render_mode == defines.render_mode.game then
-        if player.clear_cursor() then
-            player.cursor_stack.set_stack({name = tool_name, count = count or 1})
-        end
-    else
-        player.print({"message.no-map-mode"})
+    if player.clear_cursor() then
+        player.cursor_stack.set_stack({name = tool_name, count = count or 1})
     end
 end
 

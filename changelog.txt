@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.11
+Date: 2023-01-24
+  Changes:
+    - Removed a no longer necessary compatibility feature that prevented spawning wires in the map mode. 
+---------------------------------------------------------------------------------------------------
 Version: 1.1.10
 Date: 2022-10-01
   Bugfixes:
