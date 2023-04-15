@@ -3,6 +3,7 @@ function handle_shortcut(event)
     if string.sub(event_name, 1, 13) ~= "WireShortcuts" then return end
 
     local player = game.players[event.player_index]
+    if not player.cursor_stack then return end
     if event_name == "WireShortcuts-give-cutter" then
         give_tool(player, "wire-cutter-universal")
     else
@@ -31,6 +32,13 @@ end
 function give_copper(player)
     local inv = player.get_main_inventory()
     if inv and inv.valid then
+        if player.cursor_stack.valid_for_read then
+            if string.sub(player.cursor_stack.name, 1, 11) == "wire-cutter" then
+                player.clear_cursor()
+            elseif player.cursor_stack.name == "copper-cable" then
+                return
+            end
+        end
         local wire = inv.find_item_stack("copper-cable")
         if wire then
             player.cursor_stack.swap_stack(wire)
@@ -60,12 +68,10 @@ function has_hidden_connections(entity)
     local blacklisted = {
         "se-rocket-launch-pad",
         "logistic-train-stop-lamp-control",
-        "logistic-train-stop-input" 
+        "logistic-train-stop-input"
     }
     for _, filter in ipairs(blacklisted) do
-       if string.sub(entity.name, 1, #filter) == filter then
-            return true
-       end 
+        if string.sub(entity.name, 1, #filter) == filter then return true end
     end
     return false
 end
