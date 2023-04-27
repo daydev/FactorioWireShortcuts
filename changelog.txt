@@ -1,7 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.13
+Date: 2023-04-26
+  Bugfixes:
+    - Fixed that the shortcuts and hotkeys wouldn't work properly with a connection in progress.
+---------------------------------------------------------------------------------------------------
 Version: 1.1.12
-Date: 2023-01-24
-  Fixed:
+Date: 2023-04-15
+  Bugfixes:
     - Fixed that the wire cutter tool could be placed into the inventory;
     - Fixed crash when using shortcuts when dead.
 ---------------------------------------------------------------------------------------------------

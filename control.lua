@@ -24,6 +24,9 @@ function handle_shortcut(event)
 end
 
 function give_tool(player, tool_name, count)
+    if player.drag_target then 
+        player.clear_cursor()
+    end
     if player.clear_cursor() then
         player.cursor_stack.set_stack({name = tool_name, count = count or 1})
     end
